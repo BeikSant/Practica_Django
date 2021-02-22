@@ -1,0 +1,44 @@
+
+{% extends "master.html" %}
+{% block contenido %}
+
+<center>
+    <h1>Transacción</h1>
+</center>
+
+<table class="table">
+    <tbody>
+        <tr>
+            <td><strong>Cliente: </strong> {{cliente.nombres}} {{cliente.apellidos}}</td>
+            <td><strong>Cedula: </strong>{{cliente.cedula}}</td>
+            <td><strong>Correo: </strong>{{cliente.correo}}</td>
+    </tbody>
+</table>
+
+<span>Seleccione el tipo de transacción:</span>
+
+<table class="table table-active">
+    <thead>
+        <tr>
+            <th scope="col">Numero</th>
+            <th scope="col">Saldo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Operacion</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{cuenta.numero}}</td>
+            <td>{{cuenta.saldo}}</td>
+            <td>{{cuenta.estado}}</td>
+            <td>{{cuenta.tipoCuenta}}</td>
+            <td>
+                <a href="{% url 'depositar' cuenta.numero %}"><i class="bi bi-plus-circle"></i></a>
+                <a href="{% url 'retirar' cuenta.numero %}"><i class="bi bi-dash-circle"></i></a>
+            </td>
+        </tr>
+    </tbody>
+</table>
+
+{% endblock %}

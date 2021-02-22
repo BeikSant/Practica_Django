@@ -1,0 +1,90 @@
+{% extends "master.html" %}
+
+{% block contenido %}
+<h2>Crear Cliente</h2>
+<form method="POST"> {% csrf_token %}
+    <h4><strong>Datos del Cliente</strong></h4>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_cedula">Cedula</label>
+            <input type="text" class="form-control" name="cedula" maxlength="10" required id="id_cedula">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_apellidos">Apellidos:</label>
+            <input type="text" class="form-control" name="apellidos" maxlength="70" required id="id_apellidos">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_nombres">Nombres:</label>
+            <input type="text" class="form-control" name="nombres" maxlength="70" required id="id_nombres">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="id_genero">Genero:</label>
+
+            <select name="genero" id="id_genero" class="form-control">
+                <option value="femenino">Femenino</option>
+
+                <option value="masculino">Masculino</option>
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="id_estadoCivil">EstadoCivil:</label>
+
+            <select name="estadoCivil" id="id_estadoCivil" class="form-control">
+                <option value="soltero">Soltero</option>
+
+                <option value="casado">Casado</option>
+
+                <option value="union">Unión Libre</option>
+
+                <option value="divorciado">Divoraciado</option>
+
+                <option value="viudo">Viudo</option>
+
+                <option value="separado">Separado</option>
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="id_correo">Correo:</label>
+        <input type="email" class="form-control" name="correo" maxlength="105" required id="id_correo"></p>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="id_telefono">Telefono:</label>
+            <input type="text" class="form-control" name="telefono" maxlength="15" required id="id_telefono">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="id_celular">Celular:</label>
+            <input type="text" class="form-control" name="celular" maxlength="15" required id="id_celular">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="id_direccion">Direccion:</label>
+        <textarea name="direccion" class="form-control" maxlength="200" required id="id_direccion"></textarea>
+    </div>
+    <h4><strong>Datos de la Cuenta</strong></h4>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_numero">Numero:</label>
+            <input type="text" class="form-control" name="numero" maxlength="20" required id="id_numero">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_tipoCuenta">TipoCuenta:</label>
+            <select name="tipoCuenta" id="id_tipoCuenta" class="form-control">
+                <option value="ahorros">Ahorros</option>
+
+                <option value="corriente">Corriente</option>
+
+                <option value="programado">Programado</option>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_saldo">Saldo:</label>
+            <input type="number" class="form-control" name="saldo" step="0.01" required id="id_saldo">
+        </div>
+    </div>
+    <button type="submit" class="btn btn-primary">Crear Cliente</button>
+</form>
+{% endblock %}

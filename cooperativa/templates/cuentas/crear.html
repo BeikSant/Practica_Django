@@ -1,0 +1,37 @@
+{% extends "master.html" %}
+{% block contenido %}
+
+<h4>Crear Cuenta</h4>
+<table class="table">
+    <tbody>
+      <tr>
+        <td><strong>Cliente: </strong> {{cliente.nombres}} {{cliente.apellidos}}</td>
+        <td><strong>Cedula: </strong>{{cliente.cedula}}</td>
+        <td><strong>Correo: </strong>{{cliente.correo}}</td>
+    </tbody>
+  </table>
+<form method="POST" class=".bg-secondary"> {% csrf_token %}
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_numero">Numero:</label>
+            <input type="text" class="form-control" name="numero" maxlength="20" required id="id_numero">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_tipoCuenta">TipoCuenta:</label>
+            <select name="tipoCuenta" id="id_tipoCuenta" class="form-control">
+                <option value="ahorros">Ahorros</option>
+
+                <option value="corriente">Corriente</option>
+
+                <option value="programado">Programado</option>
+            </select>
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_saldo">Saldo:</label>
+            <input type="number" class="form-control" name="saldo" step="0.01" required id="id_saldo">
+        </div>
+    </div>
+    <button class="btn btn-primary" type="submit">Crear Cuenta</button>
+</form>
+
+{% endblock %}

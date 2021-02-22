@@ -1,0 +1,106 @@
+{% extends "master.html" %}
+{% block contenido %}
+
+<h4>Modificar Cliente</h4>
+<form method="POST"> {% csrf_token %}
+    <h3>Datos del Cliente</h3>
+    <div class="form-row">
+        <div class="form-group col-md-4">
+            <label for="id_cedula">Cedula</label>
+            <input type="text" class="form-control" name="cedula" maxlength="10" required id="id_cedula" value="{{ formulario_cliente.cedula.value }}">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_apellidos">Apellidos:</label>
+            <input type="text" class="form-control" name="apellidos" maxlength="70" required id="id_apellidos" value="{{ formulario_cliente.apellidos.value }}">
+        </div>
+        <div class="form-group col-md-4">
+            <label for="id_nombres">Nombres:</label>
+            <input type="text" class="form-control" name="nombres" maxlength="70" required id="id_nombres" value="{{ formulario_cliente.nombres.value }}">
+        </div>
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="id_genero">Genero:</label>
+
+            <select name="genero" id="id_genero" class="form-control">
+                {% if formulario_cliente.genero.value == 'femenino' %}
+                <option value="femenino" selected>Femenino</option>
+                <option value="masculino">Masculino</option>
+                {% elif formulario_cliente.genero.value == 'masculino' %}
+                <option value="femenino">Femenino</option>
+                <option value="masculino" selected>Masculino</option>
+                {% endif %}
+            </select>
+        </div>
+        <div class="form-group col-md-6">
+            <label for="id_estadoCivil">EstadoCivil:</label>
+
+            <select name="estadoCivil" id="id_estadoCivil" class="form-control" value="{{ formulario_cliente.estadoCivil.value }}">
+                {% if formulario_cliente.estadoCivil.value == 'soltero' %}
+                <option value="soltero" selected>Soltero</option>
+                <option value="casado">Casado</option>
+                <option value="union">Unión Libre</option>
+                <option value="divorciado">Divoraciado</option>
+                <option value="viudo">Viudo</option>
+                <option value="separado">Separado</option>
+                {% elif formulario_cliente.estadoCivil.value == 'casado' %}
+                <option value="soltero">Soltero</option>
+                <option value="casado" selected>Casado</option>
+                <option value="union">Unión Libre</option>
+                <option value="divorciado">Divoraciado</option>
+                <option value="viudo">Viudo</option>
+                <option value="separado">Separado</option>
+                {% elif formulario_cliente.estadoCivil.value == 'union' %}
+                <option value="soltero">Soltero</option>
+                <option value="casado">Casado</option>
+                <option value="union" selected>Unión Libre</option>
+                <option value="divorciado">Divoraciado</option>
+                <option value="viudo">Viudo</option>
+                <option value="separado">Separado</option>
+                {% elif formulario_cliente.estadoCivil.value == 'divorciado' %}
+                <option value="soltero">Soltero</option>
+                <option value="casado">Casado</option>
+                <option value="union">Unión Libre</option>
+                <option value="divorciado" selected>Divoraciado</option>
+                <option value="viudo">Viudo</option>
+                <option value="separado">Separado</option>
+                {% elif formulario_cliente.estadoCivil.value == 'viudo' %}
+                <option value="soltero">Soltero</option>
+                <option value="casado">Casado</option>
+                <option value="union">Unión Libre</option>
+                <option value="divorciado">Divoraciado</option>
+                <option value="viudo" selected>Viudo</option>
+                <option value="separado">Separado</option>
+                {% elif formulario_cliente.estadoCivil.value == 'separado' %}
+                <option value="soltero">Soltero</option>
+                <option value="casado">Casado</option>
+                <option value="union">Unión Libre</option>
+                <option value="divorciado">Divoraciado</option>
+                <option value="viudo">Viudo</option>
+                <option value="separado" selected>Separado</option>
+                {% endif %}
+            </select>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="id_correo">Correo:</label>
+        <input type="email" class="form-control" name="correo" maxlength="105" required id="id_correo" value="{{ formulario_cliente.correo.value }}">
+    </div>
+    <div class="form-row">
+        <div class="form-group col-md-6">
+            <label for="id_telefono">Telefono:</label>
+            <input type="text" class="form-control" name="telefono" maxlength="15" required id="id_telefono" value="{{ formulario_cliente.telefono.value }}">
+        </div>
+        <div class="form-group col-md-6">
+            <label for="id_celular">Celular:</label>
+            <input type="text" class="form-control" name="celular" maxlength="15" required id="id_celular" value="{{ formulario_cliente.celular.value }}">
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="id_direccion">Direccion:</label>
+        <textarea name="direccion" class="form-control" cols="40" rows="10" maxlength="200" required
+            id="id_direccion" value="">{{ formulario_cliente.direccion.value }}</textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Modificar Cliente</button>
+</form>
+{% endblock %}

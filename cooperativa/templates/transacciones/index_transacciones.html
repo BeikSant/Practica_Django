@@ -1,0 +1,31 @@
+{% extends "master.html" %}
+
+{% block contenido %}
+<center>
+    <h4>Lista de Cuentas Disponibles</h4>
+</center>
+
+<span>Seleccione una cuenta para realizar la transacción</span>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Numero</th>
+            <th scope="col">Saldo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Seleccionar</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cuenta in listaCuentas%}
+        <tr>
+            <td>{{cuenta.numero}}</td>
+            <td>{{cuenta.saldo}}</td>
+            <td>{{cuenta.estado}}</td>
+            <td>{{cuenta.tipoCuenta}}</td>
+            <td><a href="{% url 'cuenta_cliente' cuenta.numero %}"><i class="bi bi-check-circle"></i></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

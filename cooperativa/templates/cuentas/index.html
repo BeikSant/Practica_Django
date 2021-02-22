@@ -1,0 +1,44 @@
+{% extends "master.html" %}
+{% block contenido %}
+
+<h1>Lista de Cuentas</h1>
+
+<table class="table">
+    <tbody>
+      <tr>
+        <td><strong>Cliente: </strong> {{cliente.nombres}} {{cliente.apellidos}}</td>
+        <td><strong>Cedula: </strong>{{cliente.cedula}}</td>
+        <td><strong>Correo: </strong>{{cliente.correo}}</td>
+    </tbody>
+</table>
+
+<table class="table table-active">
+    <thead>
+        <tr>
+            <th scope="col">Numero</th>
+            <th scope="col">Saldo</th>
+            <th scope="col">Estado</th>
+            <th scope="col">Tipo</th>
+            <th scope="col">Operacion</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cuenta in cuentas%}
+        <tr>
+            <td>{{cuenta.numero}}</td>
+            <td>{{cuenta.saldo}}</td>
+            <td>{{cuenta.estado}}</td>
+            <td>{{cuenta.tipoCuenta}}</td>
+            <td>
+                <a href="{% url 'eliminar_cuenta' cuenta.numero cliente.cedula%}"><i class="bi bi-trash"></i></a>
+                <a href="{% url 'modificar_cuenta' cuenta.numero cliente.cedula%}"><i class="bi bi-pencil"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <th scope="row" colspan="5">Crear nueva cuenta <a href="{% url 'crear_cuentas' cliente.cedula %}"><i
+                        class="bi bi-plus-circle"></i></a></th>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

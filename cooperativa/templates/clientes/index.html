@@ -1,0 +1,34 @@
+{% extends "master.html" %}
+{% block contenido %}
+<h4>Lista de Cliente</h4>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th scope="col">Cédula</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">Nombres</th>
+            <th scope="col">Correo</th>
+            <th scope="col">Opciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for cliente in listaClientes%}
+        <tr>
+            <td>{{cliente.cedula}}</td>
+            <td>{{cliente.apellidos}}</td>
+            <td>{{cliente.nombres}}</td>
+            <td>{{cliente.correo}}</td>
+            <td>
+                <a href="{% url 'cuentas' cliente.cedula %}"><i class="bi bi-cash"></i></a>
+                <a href="{% url 'eliminar_cliente' cliente.cedula %}"><i class="bi bi-trash"></i></a>
+                <a href="{% url 'modificar_cliente' cliente.cedula %}"><i class="bi bi-pencil"></i></a>
+            </td>
+        </tr>
+        {% endfor %}
+        <tr>
+            <th scope="row" colspan="5">Añadir nuevo Cliente <a href="{% url 'crear_clientes'%}"><i
+                        class="bi bi-plus-circle"></i></a></th>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

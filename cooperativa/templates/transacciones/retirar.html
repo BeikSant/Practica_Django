@@ -1,0 +1,19 @@
+{% extends "master.html" %}
+
+{% block contenido %}
+<h4>Retiro</h4>
+<form method="POST">{% csrf_token %}
+
+    <div class="form-group col-md-2">
+        <label for="id_valor">Valor:</label>
+        <input type="number" class="form-control" name="valor" step="0.01" required id="id_valor">
+    </div>
+
+    <div class="form-group col-md-6">
+        <label for="id_descripcion">Descripcion:</label>
+        <textarea class="form-control" name="descripcion" cols="10" rows="2" required id="id_descripcion">
+        </textarea>
+    </div>
+    <button class="btn btn-primary" type="submit">Retirar</button>
+</form>
+{% endblock %}

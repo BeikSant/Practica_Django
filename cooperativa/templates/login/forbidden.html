@@ -1,0 +1,8 @@
+{% extends "master.html" %}
+   
+{% block contenido %}
+<div class="alert alert-danger" role="alert">
+    No tiene los suficientes permisos para realizar esta operación
+    <a href="{% url 'autenticar'%}">Iniciar otra sesión</a>
+</div>
+{% endblock %}
